@@ -42,3 +42,10 @@ steps:
     pathtoPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: drop
   displayName: 'Publish build artifacts'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'zero-docker-hub'
+    repository: 'zerobig/zero-go-web-demo'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
